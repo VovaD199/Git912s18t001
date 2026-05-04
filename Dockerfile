@@ -16,5 +16,3 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src/ src/
 COPY config/ config/
 COPY data/ data/
-
-CMD ["python", "src/jobs/daily_revenue_by_country.py"]
