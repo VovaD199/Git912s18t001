@@ -1,6 +1,3 @@
-# 📦 README.md (Student Template Version — фінальний варіант)
-
-````md
 # 📊 Batch Data Pipeline Assignment
 
 ## 🎯 Goal
@@ -11,7 +8,7 @@ The pipeline should:
 
 ```text
 read raw data → transform with PySpark → store in Parquet → run via Airflow
-````
+```
 
 ---
 
@@ -36,6 +33,19 @@ This dataset is used by:
 You are given a **production-like pipeline with missing core logic**.
 
 Your job is to implement the transformation so that the pipeline works correctly.
+
+---
+
+## ✅ What Is Already Implemented
+
+You do NOT need to implement or modify:
+
+* Airflow DAG
+* Docker setup
+* config loader
+* input validation
+* output validation
+* Spark session creation
 
 ---
 
@@ -93,7 +103,7 @@ Partitioned by:
 order_date=YYYY-MM-DD/
 ```
 
-Columns:
+### Expected columns
 
 ```text
 order_date
@@ -114,14 +124,13 @@ File:
 src/jobs/daily_revenue_by_country.py
 ```
 
-### TODO
-
-Implement:
+### Required function
 
 ```python
 def transform(users_df, orders_df):
     """
-    TODO:
+    Implement the transformation:
+
     1. filter only completed orders
     2. join orders with users on user_id
     3. group by order_date and country
@@ -130,6 +139,8 @@ def transform(users_df, orders_df):
        - completed_orders_count
        - unique_customers_count
        - avg_order_value
+
+    avg_order_value = total_revenue / completed_orders_count
     """
     pass
 ```
@@ -177,6 +188,22 @@ docker compose exec airflow-scheduler bash -c "cd /opt/airflow && PYTHONPATH=/op
 
 ---
 
+## 🧪 What Will Be Checked
+
+Autograder will verify:
+
+* only completed orders are included
+* cancelled orders are excluded
+* revenue is calculated correctly
+* users are joined correctly
+* country is present in output
+* unique customers are counted correctly
+* avg_order_value is correct
+* output is written as Parquet
+* all tests pass
+
+---
+
 ## ✔ Success Criteria
 
 Your solution is correct if:
@@ -209,6 +236,7 @@ Your solution is correct if:
   * Airflow DAG
   * Docker configuration
   * validation utilities
+  * tests
 
 * Focus only on:
 
@@ -230,6 +258,8 @@ Requirements:
 
 * read Parquet output
 * return JSON
+
+This does NOT affect the core assignment grading.
 
 ---
 
