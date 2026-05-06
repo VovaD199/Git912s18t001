@@ -49,7 +49,7 @@ jobs:
       - name: Checkout hidden tests
         uses: actions/checkout@v4
         with:
-          repository: https://github.com/VovaD199/Git912s18t001ht
+          repository: VovaD199/Git912s18t001ht
           token: ${{ secrets.Git912s18t001ht }}
           path: hidden-tests-repo
 
